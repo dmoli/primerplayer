@@ -1,5 +1,5 @@
 # primerplayer
-Video game responsive website
+Video game responsive website https://skumblue.github.io/primerplayer
 
 Skills applied: https://platzi.com/cursos/responsive-design/
 
