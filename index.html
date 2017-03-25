@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Primer Player 0.1</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <style>
+    #main,header{max-width:1024px;margin:0 auto}nav#menu,nav#menu ul li:last-child{margin-right:0}*{font-size:15px;font-family:Montserrat,sans-serif}a{text-decoration:none;color:#2480ff}@font-face{font-family:icomoon;src:url(fonts/icomoon.eot?i6adtn);src:url(fonts/icomoon.eot?i6adtn#iefix) format("embedded-opentype"),url(fonts/icomoon.ttf?i6adtn) format("truetype"),url(fonts/icomoon.woff?i6adtn) format("woff"),url(fonts/icomoon.svg?i6adtn#icomoon) format("svg");font-weight:400;font-style:normal}[class*=" icon-"],[class^=icon-]{font-family:icomoon!important;speak:none;font-style:normal;font-weight:400;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;color:#fff;-moz-osx-font-smoothing:grayscale}.icon-search:before{content:"\e986"}.icon-menu:before{content:"\e9bd"}.icon-whatsapp:before{content:"\ea93"}body{font:24px Helvetica;margin:0}nav{padding:10px;margin:5px}#main{min-height:800px;width:80%}#main>section{width:auto}nav#menu ul{list-style:none}nav#menu{position:absolute;right:0;top:30px;padding-right:7px}header{display:block;min-height:100px;position:relative;padding:0;text-align:center;background:#fff;width:80%}nav#menu ul li{margin-right:26px;display:inline-block}figure.logotipo{margin:0;display:inline-block;width:165px}.burger-button{width:40px;border-radius:50%;line-height:40px;height:40px;background:#2480ff;text-align:center;position:fixed;left:10px;top:10px;z-index:2;display:none}section#buscador-container input[type=text]{padding:14px 9px;border:none;border-radius:5px;font-size:1rem;margin:0;flex:1 1 100%;background:#2480ff;width:100%;color:#fff}#buscador-container input#buscador::-webkit-input-placeholder{color:#fff}#buscador-container input#buscador:-moz-placeholder{color:#fff}#buscador-container input#buscador::-moz-placeholder{color:#fff}#buscador-container input#buscador:-ms-input-placeholder{color:#fff}section#buscador-container{padding:11px 0 0;display:flex;position:relative;margin-bottom:14px}span.icon-search{position:absolute;color:#fff;right:13px;top:27px;font-size:1rem}#main section article{margin:0 auto 30px}section#juegos-container>article{display:flex;background:#ebeef1}section#juegos-container>article section{flex:1;padding-top:18px;padding-left:18px;padding-bottom:18px}section#juegos-container article section p:first-child{font-size:2rem;color:#4c4c4c!important}section#juegos-container article section p{margin:0 0 10px;font-size:1.5rem;color:#4c4c4c}section#juegos-container p.juego-consola{font-size:1rem!important;margin:7px 0 0!important}section#juegos-container p.juego-precio-antes{font-size:1rem!important;text-decoration:line-through;margin:0 0 3px!important;color:#777!important}section#juegos-container p.juego-precio{background:#d0403a;color:#fff;display:inline-block;padding:4px 7px;border-radius:4px}section#juegos-container article.juego-whatsapp{margin:16px 0 0!important}section#juegos-container article.juego-whatsapp span.icon-whatsapp{color:#2480ff!important;margin:0 3px 0 0}.uppercase{text-transform:uppercase}@media all and (max-width:468px){#main section article,img.juego-imagen{width:100%}}@media all and (max-width:725px){section#juegos-container article{display:block}img.juego-imagen{margin:0 auto;display:block}section#juegos-container article section p:first-child{margin-top:13px}}@media all and (max-width:704px){header{position:static}nav#menu{width:100%;top:0;left:-100%;bottom:0;background:rgba(36,128,255,.83);display:flex;align-items:center;position:fixed;margin:0;border-radius:0;border:0;padding:0;z-index:1}nav#menu ul{list-style:none;flex:1;padding:0}nav#menu ul li{display:block;text-align:center;margin:0;border-bottom:1px solid #fff;padding:14px 0}nav#menu ul li:nth-child(1){border-top:1px solid #fff}nav#menu ul li a{color:#fff}.burger-button{display:block}}@media screen and (-moz-min-device-pixel-ratio:2){body{background:red}}@media screen and (-ms-min-device-pixel-ratio:2){body{background:red}}@media screen and (-o-min-device-pixel-ratio:2){body{background:red}}
+    </style>
+  </head>
+  <body>
+    <!--header-->
+    <header id="header" class="uppercase">
+      <!-- logotipo -->
+      <figure class="logotipo">
+        <img src="images/logo.png" srcset="images/logo.png 1x, images/logo2x.png 2x" width="157" height="127" alt="Logo Primer Player"/>
+      </figure>
+      <span class="burger-button icon-menu" id="burger-button"></span>
+      <!-- menu -->
+      <nav class="menu" id="menu"> 
+        <ul>
+          <li>
+            <a href="#header" onclick="toggleMenu()">juegos</a>
+          </li>
+          <li>
+            <a href="#informacion-empresa" onclick="toggleMenu()">¿cómo comprar?</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!--main-->
+    <div id='main'>
+      <!--buscador-->
+      <section id="buscador-container">
+        <input id="buscador" class="uppercase" type="text" placeholder="Busca tu juego..." onkeyup="filtrar(this)" />
+        <span class="icon-search"></span>
+      </section>
+      <!--contenedor juegos-->
+      <section id="juegos-container">
+        <article class="juegos-item">
+          <img width="305" height="350" class="juego-imagen" data-src="images/juegos/prueba-juego.jpg|images/juegos/prueba-juego.jpg"/>
+          <section>
+            <p class="juego-nombre">Assassins Creed Brotherhood</p>
+            <p class="juego-precio-antes">$ 13.000</p>
+            <p class="juego-precio">$ 10.000</p>
+            <p class="juego-consola">PLAY STATION 3</p>
+            <article class="juego-whatsapp">
+              <span class="icon-whatsapp"></span>
+              <a href="tel:+55951098779">+569 5109 8779</a>
+            </article>
+          </section>
+        </article>
+        <article class="juegos-item">
+          <img  width="305" height="350" class="juego-imagen" data-src="images/juegos/prueba-juego.jpg|images/juegos/prueba-juego.jpg"/>
+          <section>
+            <p class="juego-nombre">Assassins Creed Brotherhood</p>
+            <p class="juego-precio-antes">$ 13.000</p>
+            <p class="juego-precio">$ 10.000</p>
+            <p class="juego-consola">PLAY STATION 3</p>
+            <article class="juego-whatsapp">
+              <span class="icon-whatsapp"></span>
+              <a href="tel:+55951098779">+569 5109 8779</a>
+            </article>
+          </section>
+        </article>
+        <article class="juegos-item">
+          <img  width="305" height="350" class="juego-imagen" data-src="images/juegos/prueba-juego.jpg|images/juegos/prueba-juego.jpg"/>
+          <section>
+            <p class="juego-nombre">Assassins Creed Brotherhood</p>
+            <p class="juego-precio-antes">$ 13.000</p>
+            <p class="juego-precio">$ 10.000</p>
+            <p class="juego-consola">PLAY STATION 3</p>
+            <article class="juego-whatsapp">
+              <span class="icon-whatsapp"></span>
+              <a href="tel:+55951098779">+569 5109 8779</a>
+            </article>
+          </section>
+        </article>
+        <article class="juegos-item">
+          <img  width="305" height="350" class="juego-imagen" data-src="images/juegos/prueba-juego.jpg|images/juegos/prueba-juego.jpg"/>
+          <section>
+            <p class="juego-nombre">Assassins Creed Brotherhood</p>
+            <p class="juego-precio-antes">$ 13.000</p>
+            <p class="juego-precio">$ 10.000</p>
+            <p class="juego-consola">PLAY STATION 3</p>
+            <article class="juego-whatsapp">
+              <span class="icon-whatsapp"></span>
+              <a href="tel:+55951098779">+569 5109 8779</a>
+            </article>
+          </section>
+        </article>
+      </section>
+    </div>
+    <!--informacion empresa-->
+    <section id="informacion-empresa">
+      <section>
+          <!--pasos-->
+          <article id="como-comprar">
+            <h1 class="uppercase">¿cómo comprar?</h1>
+            <section class="como-comprar-item">
+                <div class="como-comprar-numero">1</div>
+                <div class="como-comprar-texto">Agréganos a Whatsapp <a href="tel:+56951098779">+569 5109 8779</a></div>
+            </section>
+            <section class="como-comprar-item">
+                <div class="como-comprar-numero">2</div>
+                <div class="como-comprar-texto">Envíanos un mensaje y coordinamos la entrega en cualquiera de estas estaciones de Metro:</div>
+            </section>
+            <div id="map"></div>
+            <!--estaciones-->
+            <section>
+              <h2 class="como-comprar-metro">Lunes a Viernes después de las 18:00 hrs:</h2>
+              <article class="como-comprar-metro">Metro Escuela Militar <small>(línea 1)</small> - Las Cóndes</article>
+              <article class="como-comprar-metro">Metro Tobalaba <small>(línea 1)</small> - Providencia</article>
+              <article class="como-comprar-metro">Metro U. Católica <small>(línea 1)</small> - Santiago Centro</article>
+              <br>
+              <h2 class="como-comprar-metro">Sábado y Domingo después de las 14:00 hrs:</h2>
+              <article class="como-comprar-metro">Metro La Cisterna <small>(línea 2)</small> - La Cisterna</article>
+              <article class="como-comprar-metro">Metro Trinidad <small>(línea 4)</small> - La Florida</article>
+            </section>
+          </article>
+          <!--regiones-->
+          <article>
+            <h1 class="uppercase">¿no eres de santiago? tranqui, llegamos a todo chile</h1>
+            <p>
+              Realizamos envíos con cargo al comprador, es decir, 
+              pagas el costo del envío cuando retiras el juego en la sucursal que tu establezcas. 
+              Agréganos al Whatsapp <a href="tel:+56951098779">+569 5109 8779</a> y coordinamos el envío a través de cualquiera de las siguientes
+              empresas:
+            </p>
+            <article id="empresas-envios">
+              <img width="200" height="44" class="empresa-envios-imagen" data-src="images/empresas-envios/chilexpress.png|images/empresas-envios/chilexpress.png"/>
+              <img width="200" height="40" class="empresa-envios-imagen" data-src="images/empresas-envios/correos-chile.png|images/empresas-envios/correos-chile.png"/>
+              <img width="200" height="50" class="empresa-envios-imagen" data-src="images/empresas-envios/starken.png|images/empresas-envios/starken.png"/>
+            </article>
+          </article>
+          <!--quienes somos-->
+          <article id="quienes-somos">
+            <h1 class="uppercase">quiénes somos</h1>
+            <p>
+              Primer Player es el mejor lugar para encontrar el videojuego que quieres al mejor precio!
+              Vendemos juegos de segunda selección a un excelente estado.
+              <br><br>
+              Contamos con más de 4 años de experiencia en ventas. La satisfacción del cliente es lo 
+              más importante para nosotros :) 
+              <br><br>
+              Además ¿Tienes juegos y quieres venderlos? envíanos un Whatsapp <a href="tel:+56951098779">+569 5109 8779</a>
+            </p>
+          </article>
+          <!--facebook-->
+          <article id="facebook-box">
+            <div class="fb-page" data-href="https://www.facebook.com/primerplayer/" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/primerplayer/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/primerplayer/">Primer Player</a></blockquote></div>         
+          </article>
+      </section>
+    </section>
+    <!--footer-->
+    <footer id="footer">
+        <!--info-->
+        <section id="footer-info">
+          <article>
+            <!-- logotipo -->
+            <figure class="logotipo">
+              <img src="images/logo.png" srcset="images/logo.png 1x, images/logo2x.png 2x" width="157" height="127" alt="Logo Primer Player"/>
+            </figure>
+          </article>
+          <article>Primer Player 2017 &copy;</article>
+          <article>primerplayerchile@gmail.com</article>
+          <article><a href="tel:+56951098779">+569 5109 8779</a> <a href="tel:+56984528467">+569 8452 8467</a></article>
+        </section>
+    </footer>
+    <!--js-->
+    <script type="text/javascript">
+      /** 
+      * Google fonts
+      */
+      WebFontConfig = {
+        google: { families: [ 'Montserrat:400,700:latin', 'Allerta::latin' ] }
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })(); 
+
+      var $burgerButton = document.getElementById('burger-button');
+      var $menu = document.getElementById('menu');
+      //consulta para saber el ancho de la pantalla
+      var consulta = window.matchMedia('(max-width: 704px)');
+      //escucha cuando la pantalla cambia
+      consulta.addListener(mediaQuery);
+      //cuando carga la pagina carga el metodo
+      mediaQuery();
+
+      /**
+      *funcion para escuchar al evento
+      */
+      function mediaQuery(){
+        if (consulta.matches) {
+          $burgerButton.addEventListener('touchstart', toggleMenu);
+        }else{
+          $burgerButton.removeEventListener('touchstart', toggleMenu);
+        }
+      } 
+
+      /**
+      *function mostrar/ocultar menu
+      */
+      function toggleMenu(){
+      var $active = $menu.classList.toggle('active');
+      if (!$active){
+        $burgerButton.classList.add('icon-menu');
+        $burgerButton.classList.remove('icon-close');
+      }else{
+        $burgerButton.classList.add('icon-close');
+        $burgerButton.classList.remove('icon-menu');
+      }
+      }
+
+      /**
+      *function mostrar menu
+      */
+      function showMenu(){
+      var $active = $menu.classList.add('active');
+      $burgerButton.classList.remove('icon-menu');
+      $burgerButton.classList.add('icon-close');
+      }
+
+      /**
+      *function ocultar menu
+      */
+      function hideMenu(){
+      var $active = $menu.classList.remove('active');
+      $burgerButton.classList.add('icon-menu');
+      $burgerButton.classList.remove('icon-close');
+      }
+      
+      /**
+      * Google Maps
+      * multiples markers: http://stackoverflow.com/questions/11106671/google-maps-api-multiple-markers-with-infowindows
+      */
+
+      var locations = [
+      ['Metro Escuela Militar (Línea 1)', -33.413752, -70.58325000000002, 'Las Cóndes'],
+      ['Metro Tobalaba (Línea 1)', -33.418145, -70.60135300000002, 'Providencia'],
+      ['Metro U. Católica (Línea 1)', -33.4405184, -70.6406591, 'Santiago Centro'],
+      ['Metro La Cisterna (Línea 2)', -33.537443, -70.66425099999998, 'La Cisterna'],
+      ['Metro Trinidad (Línea 4)', -33.54702, -70.58765399999999, 'La Florida']
+      ];
+      var lastOpenedInfoWindow = null;
+
+      function initMap() {
+      var myOptions = {
+        center: new google.maps.LatLng(-33.4488897, -70.6692655),
+        zoom: 11,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        scrollwheel: false
+      };
+      var map = new google.maps.Map(document.getElementById("map"),
+          myOptions);
+
+      setMarkers(map,locations)
+      }
+
+      function setMarkers(map,locations){
+      var marker, i
+      for (i = 0; i < locations.length; i++){  
+        var nombre = locations[i][0]
+        var lat = locations[i][1]
+        var long = locations[i][2]
+        var comuna =  locations[i][3]
+
+        latlngset = new google.maps.LatLng(lat, long);
+        var marker = new google.maps.Marker({  
+          map: map, title: nombre , position: latlngset  
+        });
+        //map.setCenter(marker.getPosition())
+
+        var content = '<h3 class="infowindow-estacion">'+nombre+'</h3>'+'<p class="infowindow-comuna">'+comuna+'</p>';    
+
+        var infowindow = new google.maps.InfoWindow()
+        google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+          return function() {
+            closeLastOpenedInfoWindow();
+            infowindow.setContent(content);
+            infowindow.open(map,marker);
+            lastOpenedInfoWindow = infowindow;
+          };
+        })(marker,content,infowindow)); 
+      }
+      }
+
+      function closeLastOpenedInfoWindow() {
+      if (lastOpenedInfoWindow) {
+          lastOpenedInfoWindow.close();
+      }
+      }
+
+      /**
+      * filtro
+      */
+      function filtrar(input){
+        var q = (input.value).toLowerCase().trim();
+        var juegos = document.querySelectorAll("#juegos-container .juegos-item");
+        for (var i=0; i<juegos.length; i++){
+          var juego = juegos[i];
+          var nombre = (juego.querySelectorAll('.juego-nombre')[0].innerText).toLowerCase().trim();
+          juego.className = (nombre.indexOf(q) >= 0)?'juegos-item':'juegos-item hide';
+        }
+      }
+
+      /**
+      * cargar javascript deferred
+      */
+      var dfLoadStatus = 0;
+      var dfLoadFiles = [
+        ["https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.7/hammer.min.js"]
+      ];
+
+      /**
+      * método recurivo que carga cada librería dentro de "dfLoadFiles"
+      * luego de terminar el recorrido recursivo llama a "performDeferredActions" para llamar al .js dependiente
+      */
+      function downloadJSAtOnload() {
+          if (!dfLoadFiles.length) { 
+            performDeferredActions(); 
+            return;
+          }
+
+          // shift remueve el primer item del array, y retorna ese item
+          var dfGroup = dfLoadFiles.shift();
+          dfLoadStatus = 0;
+
+          for (var i = 0; i < dfGroup.length; i++) {
+              dfLoadStatus++;
+              var element = document.createElement('script');
+              element.src = dfGroup[i];
+              element.onload = element.onreadystatechange = function () {
+                  if (!this.readyState || this.readyState === 'complete') {
+                      dfLoadStatus--;
+                      if (dfLoadStatus === 0) {
+                          // if jquery was loaded, then load other js
+                          if (dfGroup.length === 1) {
+                            downloadJSAtOnload();
+                          }
+                      }
+                  }
+              };
+              document.body.appendChild(element);
+          }
+      }
+
+      /**
+      * llama al metodo recursivo cuando termina de cargar todo, para asi no bloquear contenido
+      */
+      if (window.addEventListener) {
+          window.addEventListener("load", downloadJSAtOnload, false);
+      } else if (window.attachEvent) {
+          window.attachEvent("onload", downloadJSAtOnload);
+      } else {
+          window.onload = downloadJSAtOnload;
+      }
+
+      /**
+      * metodo que carga todo el .js dependiente de librerias diferidas
+      */
+      function performDeferredActions() {
+        /**
+        * Gestos touch
+        */
+        var $body = document.body;
+        var gestos = new Hammer($body);
+        gestos.on('swipeleft', hideMenu);
+        gestos.on('swiperight', showMenu);
+      }
+    </script>
+    <!--Google Maps-->
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZr9_OTaOcsoZ8KHgFVChZRzBtwWi-3P4&callback=initMap">
+    </script>
+    <!--Facebook-->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.8&appId=564858623709826";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <!--Blazy-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.5.4/blazy.min.js"></script>
+    <script type="text/javascript">
+      /**
+      * lazy loading
+      */
+      var bLazy = new Blazy({
+        selector: 'img'
+      });
+    </script>
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="css/style.min.css">
+  </body>
+</html>

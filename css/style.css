@@ -1,0 +1,517 @@
+*{
+  font-size: 15px;
+}
+a{
+  text-decoration: none;
+  color: #2480ff;
+}
+a:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* iconos */
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?i6adtn');
+  src:  url('../fonts/icomoon.eot?i6adtn#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?i6adtn') format('truetype'),
+    url('../fonts/icomoon.woff?i6adtn') format('woff'),
+    url('../fonts/icomoon.svg?i6adtn#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-search:before {
+  content: "\e986";
+}
+
+.icon-menu:before {
+  content: "\e9bd";
+}
+
+.icon-close:before {
+  content: "\ea0f";
+}
+
+.icon-whatsapp:before {
+  content: "\ea93";
+}
+
+/* inicio */
+body {
+ font: 24px Helvetica;
+ margin: 0;
+}
+header, footer{
+  display: block;
+  padding: 10px;
+  min-height: 100px;
+}
+nav, aside{
+  
+   /*1 de 72 pulgada, 1 pulgada = 96px = 2.54 cm*/
+  padding: 10px;
+  margin: 5px;
+}
+section{
+}
+
+#main{
+  min-height: 800px;
+  width: 80%;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+#main > nav{
+  flex: 1 6 20%;
+  order: 1;
+}
+
+#main > section{
+  width: auto;
+}
+
+#main > aside{
+  flex: 1 6 20%;
+  order: 3;
+}
+
+/* portada */
+section#portada {
+    width: 100%;
+    height: 400px;
+    background: #ccc;
+}
+
+/* header */
+nav#menu ul {
+  list-style: none;
+}
+
+nav#menu {
+  position: absolute;
+  right: 0;
+  top: 30px;
+  /* display: none; */
+  margin-right: 0px;
+  padding-right: 7px;
+}
+
+header {
+  position: relative;
+  padding: 0px;
+  text-align: center;
+  background: #fff;
+  width: 80%;
+  max-width: 1024px;
+  margin: 0px auto;
+}
+
+nav#menu ul li {
+  margin-right: 26px;
+  display: inline-block;
+}
+
+nav#menu ul li:last-child {
+    margin-right: 0px;
+}
+
+figure.logotipo {
+  margin: 0px;display: 
+  inline-block;width: 165px;
+}
+
+.burger-button{
+  width: 40px;
+  border-radius: 50%;
+  line-height: 40px;
+  height: 40px;
+  background: #2480ff;
+  display: inline-block;
+  text-align: center;
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  cursor: pointer;
+  z-index: 2;
+  display: none;
+}
+
+/* buscador */
+section#buscador-container input[type="text"] {
+    padding: 14px 9px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin: 0px;
+    flex: 1 1 100%;
+    background: #2480ff;
+    /* width: auto !important; */
+    width: 100%;
+    color: #fff;
+}
+
+#buscador-container input#buscador::-webkit-input-placeholder { color: #fff; }
+#buscador-container input#buscador:-moz-placeholder { color: #fff; }
+#buscador-container input#buscador::-moz-placeholder { color: #fff; }
+#buscador-container input#buscador:-ms-input-placeholder { color: #fff; }
+
+section#buscador-container {
+    padding: 11px 0px 0px 0px;
+    /* width: 100%; */
+    display: flex;
+    position: relative;
+    margin-bottom: 14px;
+}
+
+span.icon-search {
+    position: absolute;
+    color: #fff;
+    right: 13px;
+    top: 27px;
+    font-size: 1rem;
+}
+
+/* contenido */
+#main section article {
+    margin: 0px auto 30px auto;
+}
+
+section#juegos-container > article {
+    display: flex;
+    background: rgb(235, 238, 241);
+}
+
+section#juegos-container > article section {
+    flex: 1;
+    padding-top: 18px;
+    padding-left: 18px;
+    padding-bottom: 18px;
+}
+
+section#juegos-container article section p:first-child {
+    font-size: 2rem;
+    color: #4c4c4c !important;
+}
+
+section#juegos-container article section p {
+    margin: 0px 0px 10px 0px;
+    font-size: 1.5rem;
+    color: #4c4c4c;
+}
+
+section#juegos-container p.juego-consola {
+    font-size: 1rem !important;
+    margin: 7px 0px 0px 0px !important;
+}
+
+section#juegos-container p.juego-precio-antes {
+    font-size: 1rem !important;
+    text-decoration: line-through;
+    margin: 0px 0px 3px 0px !important;
+    color: #777 !important;
+}
+
+section#juegos-container p.juego-precio{
+  background: rgb(208, 64, 58);
+  color: #fff;
+  display: inline-block;
+  padding: 4px 7px;
+  border-radius: 4px;
+}
+
+section#juegos-container img.juego-imagen{
+  /*width: auto;*/
+}
+
+section#juegos-container article.juego-whatsapp {
+    margin: 16px 0px 0px 0px !important;
+}
+
+section#juegos-container article.juego-whatsapp span.icon-whatsapp{
+  color: #2480ff !important;
+  margin: 0px 3px 0px 0px;
+}
+
+
+/* informacion empresa */
+
+section#informacion-empresa {
+  width: auto;
+  background: rgb(235, 238, 241);
+  padding: 18px 0px;
+}
+
+section#informacion-empresa > section article{
+  margin-bottom: 80px;
+}
+
+section#informacion-empresa section article h1 {
+  text-align: center;
+}
+
+section#informacion-empresa > section > article {
+   margin-bottom: 100px;
+}
+
+section#informacion-empresa .como-comprar-numero {
+    max-width: 50px;
+    height: 50px;
+    background: #2480ff;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+}
+
+section#informacion-empresa section.como-comprar-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+section#informacion-empresa .como-comprar-texto {
+    display: table-cell;
+    vertical-align: middle;
+    flex: 1;
+}
+
+section#informacion-empresa #map {height: 400px;margin-top: 15px;}
+
+section#informacion-empresa #map .infowindow-estacion{
+  margin: 1px 0px 2px 0px;
+}
+
+section#informacion-empresa #map .infowindow-comuna{
+  margin: 1px 0px 2px 0px;
+}
+
+section#informacion-empresa article.como-comprar-metro {
+  margin: 8px 0px 0px 0px;
+  font-weight: normal;
+  font-size: .9rem;
+}
+
+section#informacion-empresa #quienes-somos p{
+  text-decoration-style: italic;
+}
+
+section#informacion-empresa #facebook-box{
+  margin-bottom: 0px;
+}
+
+section#informacion-empresa article#facebook-box {
+  
+}
+
+/* footer */
+footer > section, section#informacion-empresa > section {
+    width: 80%;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0px;
+}
+
+footer {
+    background: #232323;
+}
+
+section#footer-info {
+  width: 80%;
+  color: #f5f5f5;
+  display: flex;
+  align-items: center;
+}
+
+footer#footer {
+  padding: 0px;
+  display: flex;
+  align-items: center;
+}
+
+#footer-info article {
+  font-size: .8rem;
+  margin-right: 24px;
+}
+
+#footer-info article a {
+  margin-right: 13px;
+  font-size: .8rem
+}
+
+/*
+icono Whatsapp
+a[href^="tel:"]:before {
+  content: "260E";
+  display: block;
+  margin-right: 0.5em;
+}
+*/
+
+/* clases genericas */
+.hide{
+  display: none !important;
+}
+
+.uppercase{
+  text-transform: uppercase;
+}
+
+small {
+    font-size: .9em;
+}
+
+/* imagenes al 100%*/
+@media all and (max-width: 468px) {
+  img.juego-imagen, #main section article{
+    width: 100%; 
+  }
+}
+
+/* imagenes arriba e info de juego abajo */
+@media all and (max-width: 725px) {
+  section#juegos-container article {
+    display: block; 
+  }
+
+  img.juego-imagen {
+      margin: 0px auto;
+      display: block;
+  }
+
+  section#juegos-container article section p:first-child {
+      margin-top: 13px;
+  }
+}
+
+/* cuando se muestra el menu responsive */
+@media all and (max-width: 704px) {
+  /*
+  ** menu
+  */
+  header {
+    position: static;
+  }
+  nav#menu {
+    width: 100%;
+    top: 0;
+    left: -100%;
+    bottom: 0;
+    background: rgba(36, 128, 255, 0.83);
+    display: flex;
+    align-items: center;
+    position: fixed;
+    margin: 0;
+    border-radius: 0;
+    border: 0;
+    padding: 0;
+    transition: .3s;
+    z-index: 1;
+  }
+  nav#menu.active {
+    left: 0;
+  }
+  nav#menu ul {
+    list-style: none;
+    flex: 1;
+    padding: 0;
+  }
+  nav#menu ul li {
+    display: block;
+    text-align: center;
+    margin: 0;
+    border-bottom: 1px solid #fff;
+    padding: 14px 0;
+  }
+  nav#menu ul li:nth-child(1){
+    border-top:  1px solid #fff;
+  }
+  nav#menu ul li a{
+    color: #fff;
+  }
+  .burger-button{
+    display: block;
+  }
+
+  /*
+  ** menu empresas
+  */
+  section#informacion-empresa .como-comprar-numero {
+    max-width: 40px;
+    height: 40px;
+  }
+  section#informacion-empresa article#empresas-envios {
+      text-align: center;
+  }
+}
+
+/* footer responsive */
+@media all and (max-width: 806px) {
+  section#footer-info {
+    display: block;
+  }
+
+  #footer-info article {
+      margin-bottom: 14px;
+  }
+
+  #footer-info article:first-child {
+      text-align: center;
+  }
+}
+
+/* retina 2x */
+@media screen and (min-device-pixel-ratio: 2){
+  body{
+    background: #f00;
+  }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+  body{
+  }
+}
+
+@media screen and (-moz-min-device-pixel-ratio: 2) {
+  body{
+    background: #f00;
+  }
+}
+
+@media screen and (-ms-min-device-pixel-ratio: 2) {
+  body{
+    background: #f00;
+  }
+}
+
+@media screen and (-o-min-device-pixel-ratio: 2) {
+  body{
+    background: #f00;
+  }
+}
